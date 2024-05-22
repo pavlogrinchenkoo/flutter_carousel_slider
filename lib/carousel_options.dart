@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 
 enum CarouselPageChangedReason { timed, manual, controller }
 
-enum CenterPageEnlargeStrategy { scale, height, zoom }
+enum CenterPageEnlargeStrategy { scale, height, zoom, android }
 
 class CarouselOptions {
   /// Set carousel height and overrides any existing [aspectRatio].
   final double? height;
+  /// Set carousel offsetX and overrides any existing [aspectRatio].
+  final double? offsetX;
 
   /// Aspect ratio is used if no height have been declared.
   ///
@@ -135,6 +137,7 @@ class CarouselOptions {
 
   CarouselOptions({
     this.height,
+    this.offsetX = 0,
     this.aspectRatio: 16 / 9,
     this.viewportFraction: 0.8,
     this.initialPage: 0,
@@ -166,6 +169,7 @@ class CarouselOptions {
 
   CarouselOptions copyWith(
           {double? height,
+          double? offsetX,
           double? aspectRatio,
           double? viewportFraction,
           int? initialPage,
